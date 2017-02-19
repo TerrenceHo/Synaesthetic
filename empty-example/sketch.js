@@ -1,27 +1,30 @@
-let img, gif, pgMask;
+let img, binary, pgMask;
  
 function preload() {
-    img = loadImage('assets/googleZoom.jpg', function(img){
-        img.resize(720, 400);
-    });
+    // binary = loadString('')
 }
  
 function setup() {
     createCanvas(720, 400);
     imageMode(CENTER);  
-    pgMask = createGraphics(img.width, img.height);
-    pgMask.fill(0200, 0300);
-    pgMask.ellipse(img.width>>1, img.height>>1, img.width>>1, img.height>>1);   
+    pgMask = createGraphics(width, height);
+    pgMask.fill(255, 0300);
+    pgMask.ellipse(width>>1, height>>1, width>>1, height>>1);   
     //img.mask(pgMask); // fails b/c mask() can't deal w/ p5.Graphics
-    img.mask(pgMask._renderer); // works b/c _renderer property is a p5.Renderer
+    // img.mask(pgMask._renderer); // works b/c _renderer property is a p5.Renderer
+
 }
  
 function draw() {
     background(0, 0, 0);
-    image(img, width>>1, height>>1);
-    image(img, mouseX, mouseY);
+    image(pgMask, width>>1, height>>1);
+    noStroke();
+    fill(0);
+    text("0101010101001000101010001001010", 360, 200);
 }
-
+//Fill canvas with array of text randomly assorted 0 and 1s.
+//Mask it with a ellipse graphics.
+//By transversing an array, manupulate the numbers so that they appear flickering.
 
 
 // var img, x,y,a,b,pg;
