@@ -1,7 +1,7 @@
 let img, binary, pgMask;
  
 function preload() {
-    // binary = loadString('')
+    binary = loadStrings('assets/binaryText.txt');
 }
  
 function setup() {
@@ -20,10 +20,12 @@ function draw() {
     image(pgMask, width>>1, height>>1);
     noStroke();
     fill(0);
-    text("0101010101001000101010001001010", 360, 200);
+    for(var i = 0; i < binary.length; i++){
+        text(binary[i], 150, 50+i*20);
+    }
 }
 //Fill canvas with array of text randomly assorted 0 and 1s.
-//Mask it with a ellipse graphics.
+//Mask it with a ellipse graphics.  Make shape transparent
 //By transversing an array, manupulate the numbers so that they appear flickering.
 
 
